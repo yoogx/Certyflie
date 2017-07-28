@@ -29,7 +29,7 @@ compile:
 	gprbuild -Pcf_ada_spark.gpr
 
 prove:
-	gnatprove -P cf_ada_spark.gpr --warnings=continue --report=statistics --RTS=$(ada_rts) --no-inlining -u $(file)
+	gnatprove -P cf_ada_spark.gpr --warnings=continue --report=statistics --RTS=$(ada_rts) --prover=alt-ergo,cvc4 --no-inlining --level=4 -u $(file)
 
 # For SPARK GPL 2017, we need
 # --RTS to specifiy runtime, see SPARK UG 7.1.3
