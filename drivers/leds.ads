@@ -32,7 +32,19 @@ with Ada.Real_Time.Timing_Events; use Ada.Real_Time.Timing_Events;
 
 with STM32.Board;                 use STM32.Board;
 
-package LEDS is
+package LEDS
+  with SPARK_Mode => Off
+
+  --  XXX We disable SPARK_Mode for this units, to shut down warning
+  --  in commander.ads
+  --
+  --  "Current_Link_Status" Must Be A Global Output of
+  --  "Commander_Get_Thrust" (SPARK RM 6.1.4)
+  --
+  --  As a matter of fact, Current_Link_Status and System_Animations
+  --  should be in Global_State of this package
+
+is
 
    subtype Crazyflie_LED is User_LED;
    LED_Blue_L  : Crazyflie_LED renames STM32.Board.LED_Blue_L;
