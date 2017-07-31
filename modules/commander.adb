@@ -143,9 +143,9 @@ is
 
       pragma Warnings (Off, "unused assignment",
                        Reason => "Has_Succeed can't be equal to false here");
-      CRTP_Get_Float_Data (Handler, 1, Commands.Roll, Has_Succeed);
-      CRTP_Get_Float_Data (Handler, 5, Commands.Pitch, Has_Succeed);
-      CRTP_Get_Float_Data (Handler, 9, Commands.Yaw, Has_Succeed);
+      CRTP_Get_T_Degrees_Data (Handler, 1, Commands.Roll, Has_Succeed);
+      CRTP_Get_T_Degrees_Data (Handler, 5, Commands.Pitch, Has_Succeed);
+      CRTP_Get_T_Degrees_Data (Handler, 9, Commands.Yaw, Has_Succeed);
       CRTP_Get_T_Uint16_Data (Handler, 13, Commands.Thrust, Has_Succeed);
       pragma Warnings (On, "unused assignment");
 
@@ -226,7 +226,7 @@ is
    procedure Commander_Get_Alt_Hold
      (Alt_Hold        : out Boolean;
       Set_Alt_Hold    : out Boolean;
-      Alt_Hold_Change : out Float) is
+      Alt_Hold_Change : out T_Altitude) is
    begin
       Alt_Hold := Alt_Hold_Mode;
       Set_Alt_Hold := Alt_Hold_Mode and not Alt_Hold_Mode_Old;

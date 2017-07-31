@@ -31,6 +31,7 @@ with Ada.Real_Time; use Ada.Real_Time;
 
 with CRTP;          use CRTP;
 with Types;         use Types;
+with lps25h;        use LPS25H;
 pragma Elaborate_All (CRTP);
 
 package Commander
@@ -95,7 +96,7 @@ is
    procedure Commander_Get_Alt_Hold
      (Alt_Hold        : out Boolean;
       Set_Alt_Hold    : out Boolean;
-      Alt_Hold_Change : out Float);
+      Alt_Hold_Change : out T_Altitude);
 
    --  Cut the trust when inactivity time has been during for too long.
    procedure Commander_Watchdog
@@ -163,7 +164,7 @@ private
      (Packet : CRTP_Packet) return Commander_CRTP_Values;
 
    --  Get Float data from a CRTP Packet.
-   procedure CRTP_Get_Float_Data is new CRTP_Get_Data (Float);
+   procedure CRTP_Get_T_Degrees_Data is new CRTP_Get_Data (T_Degrees);
 
    --  Get T_Uint16 data from a CRTP Packet.
    procedure CRTP_Get_T_Uint16_Data is new CRTP_Get_Data (T_Uint16);

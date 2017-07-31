@@ -56,13 +56,19 @@ is
                   In_Out => FF_State);
 
    --  Override the previous commands if in recovery mode.
+   -------------------
+   --Modification  !--
+   -------------------
+
    procedure FF_Get_Recovery_Commands
-     (Euler_Roll_Desired  : in out Float;
-      Euler_Pitch_Desired : in out Float;
+     (Euler_Roll_Desired  : in out T_Degrees;
+      Euler_Pitch_Desired : in out T_Degrees;
       Roll_Type           : in out RPY_Type;
       Pitch_Type          : in out RPY_Type)
      with
        Global => (Input => FF_State);
+   -- T_Degrees replaces Float
+   -------------------------------------------------------
 
    --  Override the previous thrust if in recovery mode.
    procedure FF_Get_Recovery_Thrust (Thrust : in out T_Uint16)

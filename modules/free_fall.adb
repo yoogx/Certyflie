@@ -184,9 +184,13 @@ is
    -- FF_Get_Recovery_Commands --
    ------------------------------
 
+   -------------------
+   --Modification  !--
+   -------------------
+
    procedure FF_Get_Recovery_Commands
-     (Euler_Roll_Desired  : in out Float;
-      Euler_Pitch_Desired : in out Float;
+     (Euler_Roll_Desired  : in out T_Degrees;
+      Euler_Pitch_Desired : in out T_Degrees;
       Roll_Type           : in out RPY_Type;
       Pitch_Type          : in out RPY_Type) is
    begin
@@ -204,6 +208,9 @@ is
       Roll_Type := ANGLE;
       Pitch_Type := ANGLE;
    end FF_Get_Recovery_Commands;
+
+   -- T_Degrees replace Float
+   ----------------------------------------------------------
 
    ----------------------------
    -- FF_Get_Recovery_Thrust --
