@@ -179,13 +179,13 @@ is
    ---------------------------------
 
    procedure Controller_Get_Desired_Rate
-     (Roll_Rate_Desired  : out Float;
-      Pitch_Rate_Desired : out Float;
-      Yaw_Rate_Desired   : out Float) is
+     (Roll_Rate_Desired  : out T_Rate;
+      Pitch_Rate_Desired : out T_Rate;
+      Yaw_Rate_Desired   : out T_Rate) is
    begin
-      Roll_Rate_Desired := Attitude_Pid.Pid_Get_Output (Roll_Pid);
-      Pitch_Rate_Desired := Attitude_Pid.Pid_Get_Output (Pitch_Pid);
-      Yaw_Rate_Desired := Attitude_Pid.Pid_Get_Output (Yaw_Pid);
+      Roll_Rate_Desired := Saturate(Attitude_Pid.Pid_Get_Output (Roll_Pid), T_Rate'First, T_Rate'Last);
+      Pitch_Rate_Desired := Saturate(Attitude_Pid.Pid_Get_Output (Pitch_Pid), T_Rate'First, T_Rate'Last);
+      Yaw_Rate_Desired := Saturate(Attitude_Pid.Pid_Get_Output (Yaw_Pid), T_Rate'First, T_Rate'Last);
    end Controller_Get_Desired_Rate;
 
 end Controller;

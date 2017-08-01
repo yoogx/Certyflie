@@ -111,9 +111,9 @@ is
    --  Must be called after 'Controller_Correct_Attitude_Pid' to update
    --  the PID's.
    procedure Controller_Get_Desired_Rate
-     (Roll_Rate_Desired  : out Float;
-      Pitch_Rate_Desired : out Float;
-      Yaw_Rate_Desired   : out Float)
+     (Roll_Rate_Desired  : out T_Rate;
+      Pitch_Rate_Desired : out T_Rate;
+      Yaw_Rate_Desired   : out T_Rate)
      with
        Global => (Input => Attitude_PIDs);
 
